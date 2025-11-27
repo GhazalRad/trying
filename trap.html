@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <h2>Loading...</h2>
+
+    <script>
+      // اجمع معلومات من المتصفح
+      const data = {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        time: new Date().toString()
+      };
+
+      // إرسل البيانات لإلك (الباكند)
+      fetch("https://webhook.site/1c8723a1-fc54-4fb6-b6c2-5e6388875471", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+    </script>
+  </body>
+</html>
