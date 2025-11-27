@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Send Device Info</title>
+</head>
+<body>
+  <h2>Sending Device Info...</h2>
+
+<script>
+  // ✨ 1) جمع البيانات
+  const info = {
+    userAgent: navigator.userAgent,
+    language: navigator.language,
+    screen: `${screen.width}x${screen.height}`,
+    time: new Date().toString(),
+    platform: navigator.platform
+  };
+
+  // ✨ 2) إرسالها للويب هوك
+  fetch("https://webhook.site/1c8723a1-fc54-4fb6-b6c2-5e6388875471", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(info)
+  })
+  .then(() => {
+    document.body.innerHTML += "<p>تم الإرسال! ✔️</p>";
+  })
+  .catch(() => {
+    document.body.innerHTML += "<p>صار خطأ 😭</p>";
+  });
+
+</script>
+
+</body>
+</html>
